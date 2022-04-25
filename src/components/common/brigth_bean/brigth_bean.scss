@@ -1,0 +1,29 @@
+.bean_img {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    max-width: 400px;
+    margin: 35px auto;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 150px;
+        height: 3px;
+        background: white;
+        left: 0;
+        top: 50%;
+        position: absolute;
+    }
+
+    &:after {
+        content: "";
+        display: block;
+        width: 150px;
+        height: 3px;
+        background: white;
+        right: 0;
+        top: 50%;
+        position: absolute;
+    }
+}
