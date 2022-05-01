@@ -1,89 +1,79 @@
+import React from 'react';
 import './App.scss';
-import bean from '../src/logo/beans_logo.svg';
 import presto from '../src/icons/presto_coffee.png';
 import solimo from '../src/icons/solimo_coffee.png';
 import aromistico from '../src/icons/aromistico_coffee.png';
-import DarkBean from './components/common/dark_bean/dark_bean';
 import Links from './components/common/links/links';
-import BrigthBean from './components/common/brigth_bean/brigth_bean';
+import CoffeHouse from './components/CoffeHouse/coffeHouse';
+import { Route, Switch } from 'react-router-dom';
+import OurCoffe from './components/OurCoffee/ourCoffee';
+import FooterLinks from './components/common/footer_links/footer_links';
+import DarkBean from './components/common/dark_bean/dark_bean';
 
-function App() {
-  return (
-    <>
-      <header className='promo'>
-        <div className='container'>
-          <div style={{ position: 'absolute', top: 52, left: 148 }}>
-            <Links />
-          </div>
-          <div className='promo__content'>
-            <h1>Everything You Love About Coffee</h1>
-            <div><BrigthBean /></div>
-            {/*             <img src={bean} alt='bean' />*/}
-            <h2>We makes every day full of energy and taste</h2>
-            <h2>Want to try our beans?</h2>
-            <button>More</button>
-          </div>
-        </div>
-      </header>
 
-      <section className='info'>
-        <div className='container'>
-          <div className='info__content'>
-            <h2>About Us</h2>
-            <DarkBean />
-            <div className='info__content_descr'>
-              Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.
-              Afraid at highly months do things on at. Situation recommend objection do intention
-              so questions. As greatly removed calling pleased improve an. Last ask him cold feel
-              met spot shy want. Children me laughing we prospect answered followed. At it went
-              is song that held help face.
-              <br></br>
-              <br></br>
-              Now residence dashwoods she excellent you. Shade being under his bed her, Much
-              read on as draw. Blessing for ignorant exercise any yourself unpacked. Pleasant
-              horrible but confined day end marriage. Eagerness furniture set preserved far
-              recommend. Did even but nor are most gave hope. Secure active living depend son
-              repair day ladies now.
-            </div>
-          </div>
+class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      coffee: [
+        { name: 'Solimo Coffee Beans 2 kg', country: 'Kenya', img: presto, price: 10.73, best: false, id: 1 },
+        { name: 'Presto Coffee Beans 1 kg', country: 'Brazil', img: solimo, price: 15.99, best: false, id: 2 },
+        { name: 'AROMISTICO Coffee 1 kg', country: 'Kenya', img: aromistico, price: 6.99, best: false, id: 3 },
+        { name: 'Escobar Coffee 1 kg', country: 'Columbia', img: aromistico, price: 8.99, best: false, id: 4 },
+        { name: 'Awesome Coffee 1 kg', country: 'Brazil', img: aromistico, price: 9.99, best: false, id: 5 },
+        { name: 'Super Coffee 2 kg', country: 'Columbia', img: aromistico, price: 11.99, best: false, id: 6 }
+      ],
+      searchItem: '',
+    }
+  }
+
+  searchItemByInput = (item) => {
+    console.log(item)
+    //this.state.searchItem = item
+    console.log(this.state.searchItem)
+
+  }
+
+  filterArray = (array, value) => {
+    if (value === '') {
+      return array;
+    } else {
+      return array.filter(item => item.name.indexOf(value) < -1);
+    }
+  }
+
+  render() {
+    const coffee = this.state.coffee.map(({ name, price, img, id }) => {
+      return <div key={id} className='best__coffee_item'>
+        <div className='best__coffee_item-content'>
+          <img src={img} alt='#' />
+          <div className='best__coffee_item_descr'>{name}</div>
+          <div className='best__coffee_item_price'>{price}</div>
         </div>
-      </section>
-      <section className='best'>
-        <div className='container'>
-          <h2>Our best</h2>
-          <div className='best__coffee'>
-            <div className='best__coffee_item'>
-              <div className='best__coffee_item-content'>
-                <img src={presto} alt='#' />
-                <div className='best__coffee_item_descr'>Solimo Coffee Beans 2 kg</div>
-                <div className='best__coffee_item_price'>170$</div>
-              </div>
-            </div>
-            <div className='best__coffee_item'>
-              <div className='best__coffee_item-content'>
-                <img src={solimo} alt='#' />
-                <div className='best__coffee_item_descr'>Solimo Coffee Beans 2 kg</div>
-                <div className='best__coffee_item_price'>170$</div>
-              </div>
-            </div>
-            <div className='best__coffee_item'>
-              <div className='best__coffee_item-content'>
-                <img src={aromistico} alt='#' />
-                <div className='best__coffee_item_descr'>Solimo Coffee Beans 2 kg</div>
-                <div className='best__coffee_item_price'>170$</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <footer className='footer'>
-        <div className='container'>
-          <DarkBean />
+      </div>
+    })
+
+    return (
+      <>
+        <div style={{ position: 'absolute', top: 52, left: 148, zIndex: 1 }}>
           <Links />
         </div>
-      </footer>
-    </>
-  );
+
+        <Switch>
+          <Route exact path="/" component={() => <CoffeHouse coffee={coffee} />} />
+          <Route path="/our_coffee" component={() => <OurCoffe coffee={coffee} searchItem={this.searchItemByInput} />} />
+        </Switch>
+
+        <footer className='footer'>
+          <div className='container'>
+            <DarkBean />
+            <FooterLinks />
+          </div>
+        </footer>
+
+      </>
+    );
+  }
 }
 
 export default App;

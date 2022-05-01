@@ -17,7 +17,6 @@
     max-width: 1550px;
     background: no-repeat center url("../src/images/promo_bg.png");
     background-size: cover;
-    position: relative;
 
     &__content {
         margin: 0 auto;
@@ -33,7 +32,7 @@
             margin-bottom: 18px;
         }
 
-        button {
+        &-btn {
             width: 120px;
             height: 30px;
             background-color: transparent;
@@ -64,12 +63,15 @@
     &__coffee {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
 
         &_item {
-
             background: white;
             width: 220px;
             min-height: 240px;
+            margin-top: 15px;
+            box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
+            border-radius: 4px 0px 0px 4px;
 
             &_descr {
                 padding: 10px 0 14px 0;
