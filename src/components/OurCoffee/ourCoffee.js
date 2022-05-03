@@ -16,13 +16,28 @@ class OurCoffe extends React.Component {
         this.setState({
             value: e.target.value
         });
-        console.log(this.state.value)
         this.props.searchItemByInput(e.target.value);
     }
 
     render() {
-        console.log('render')
         let { coffee } = this.props;
+        let filteredCoffeeItems = coffee.map(({ name, price, img, id }) => {
+            return <div key={id} className='best__coffee_item'>
+                <div className='best__coffee_item-content'>
+                    <img src={img} alt='#' />
+                    <div className='best__coffee_item_descr'>{name}</div>
+                    <div className='best__coffee_item_price'>{price}</div>
+                </div>
+            </div>
+        })
+        let buttonData = [
+            { filter: 'all', name: 'All' },
+            { filter: 'brazil', name: 'Brazil' },
+            { filter: 'kenya', name: 'Kenya' },
+            { filter: 'columbia', name: 'Colombia' }
+        ]
+        let buttons = buttonData.map(({ filter, name }) => <button key={filter} onClick={() => this.props.getSearchedCountry(filter)} >{name}</button>)
+
         return (
             <div>
                 <div className="header">
@@ -62,15 +77,13 @@ class OurCoffe extends React.Component {
                                     Or filter
                                 </div>
                                 <div className='ou__filter_btns-items'>
-                                    <button>Brasil</button>
-                                    <button>Kenya</button>
-                                    <button>Colombia</button>
+                                    {buttons}
                                 </div>
                             </div>
                         </div>
 
                         <div className='ou__filter-items'>
-                            {coffee}
+                            {filteredCoffeeItems}
                         </div>
                     </div>
                 </div>

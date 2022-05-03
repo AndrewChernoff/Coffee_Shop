@@ -23,24 +23,41 @@ class App extends React.Component {
         { name: 'Awesome Coffee 1 kg', country: 'Brazil', img: aromistico, price: 9.99, best: false, id: 5 },
         { name: 'Super Coffee 2 kg', country: 'Columbia', img: aromistico, price: 11.99, best: false, id: 6 }
       ],
-      searchItem: ''
+      searchItem: '',
+      searchCountry: 'brazil'
     }
   }
 
   searchItemByInput = (item) => {
-    console.log(item)
-    //this.state.searchItem = item;
     this.setState({
       searchItem: item
     })
-    console.log(this.state.searchItem)
+  }
+
+  getSearchedCountry = (country) => {
+    this.setState({
+      searchCountry: country
+    })
   }
 
   filterArray = (array, value) => {
     if (value === '') {
       return array;
+    }
+    return array.filter(item => item.name.indexOf(value) > -1);
+  }
+
+  getFilteredItems = (country) => {
+    if (country === 'all') {
+      return this.state.coffee
+    } else if (country === 'brazil') {
+      return this.state.coffee.filter(item => item.country === 'Brazil')
+    } else if (country === 'kenya') {
+      return this.state.coffee.filter(item => item.country === 'Kenya')
+    } else if (country === 'columbia') {
+      return this.state.coffee.filter(item => item.country === 'Columbia')
     } else {
-      return array.filter(item => item.name.indexOf(value) < -1);
+      return this.state.coffee
     }
   }
 
@@ -55,6 +72,9 @@ class App extends React.Component {
       </div>
     })
 
+    let filteredArray = this.filterArray(this.getFilteredItems(this.state.searchCountry), this.state.searchItem);
+    /* let filteredArray = this.filterArray(this.state.coffee, this.state.searchItem);*/
+
     return (
       <>
         <div style={{ position: 'absolute', top: 52, left: 148, zIndex: 1 }}>
@@ -63,7 +83,9 @@ class App extends React.Component {
 
         <Switch>
           <Route exact path="/" component={() => <CoffeHouse coffee={coffee} />} />
-          <Route exact path="/our_coffee" component={() => <OurCoffe coffee={coffee} searchItemByInput={this.searchItemByInput} />} />
+          <Route exact path="/our_coffee">
+            <OurCoffe coffee={filteredArray} getSearchedCountry={this.getSearchedCountry} searchItemByInput={this.searchItemByInput} />
+          </Route>
         </Switch>
 
         <footer className='footer'>
