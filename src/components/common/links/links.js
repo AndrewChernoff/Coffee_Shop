@@ -2,17 +2,11 @@ import { NavLink } from "react-router-dom";
 import '../links/links.scss';
 
 const Links = () => {
-
-    const linkStyle = {
-        textDecoration: "none",
-        color: 'white'
-    };
-
     return (
         <div className='links'>
-            <NavLink to='/' style={linkStyle} activeClassName="selected">Coffee house</NavLink>
-            <NavLink to='our_coffee' style={linkStyle} activeClassName="selected">Our coffee</NavLink>
-            <NavLink to='/pleasure' style={linkStyle} activeClassName="selected">For your pleasure</NavLink>
+            <NavLink to='/' exact={true} className='links__item' activeClassName="links__selected">Coffee house</NavLink>
+            <NavLink to='our_coffee' className='links__item' activeClassName="links__selected">Our coffee</NavLink>
+            <NavLink to='/pleasure' className='links__item' activeClassName="links__selected">For your pleasure</NavLink>
         </div>
     )
 }

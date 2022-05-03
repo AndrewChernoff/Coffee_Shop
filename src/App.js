@@ -10,7 +10,6 @@ import OurCoffe from './components/OurCoffee/ourCoffee';
 import FooterLinks from './components/common/footer_links/footer_links';
 import DarkBean from './components/common/dark_bean/dark_bean';
 
-
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -24,7 +23,7 @@ class App extends React.Component {
         { name: 'Super Coffee 2 kg', country: 'Columbia', img: aromistico, price: 11.99, best: false, id: 6 }
       ],
       searchItem: '',
-      searchCountry: 'brazil'
+      searchCountry: 'all'
     }
   }
 
@@ -48,16 +47,17 @@ class App extends React.Component {
   }
 
   getFilteredItems = (country) => {
-    if (country === 'all') {
-      return this.state.coffee
-    } else if (country === 'brazil') {
-      return this.state.coffee.filter(item => item.country === 'Brazil')
-    } else if (country === 'kenya') {
-      return this.state.coffee.filter(item => item.country === 'Kenya')
-    } else if (country === 'columbia') {
-      return this.state.coffee.filter(item => item.country === 'Columbia')
-    } else {
-      return this.state.coffee
+    switch (country) {
+      case 'all':
+        return this.state.coffee;
+      case 'brazil':
+        return this.state.coffee.filter(item => item.country === 'Brazil');
+      case 'kenya':
+        return this.state.coffee.filter(item => item.country === 'Kenya');
+      case 'columbia':
+        return this.state.coffee.filter(item => item.country === 'Columbia');
+      default:
+        return this.state.coffee;
     }
   }
 
@@ -73,7 +73,6 @@ class App extends React.Component {
     })
 
     let filteredArray = this.filterArray(this.getFilteredItems(this.state.searchCountry), this.state.searchItem);
-    /* let filteredArray = this.filterArray(this.state.coffee, this.state.searchItem);*/
 
     return (
       <>
@@ -84,7 +83,11 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={() => <CoffeHouse coffee={coffee} />} />
           <Route exact path="/our_coffee">
-            <OurCoffe coffee={filteredArray} getSearchedCountry={this.getSearchedCountry} searchItemByInput={this.searchItemByInput} />
+            <OurCoffe coffee={filteredArray}
+              getSearchedCountry={this.getSearchedCountry}
+              searchItemByInput={this.searchItemByInput}
+              countryFilter={this.state.searchCountry}
+            />
           </Route>
         </Switch>
 

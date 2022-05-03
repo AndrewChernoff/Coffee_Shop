@@ -36,7 +36,16 @@ class OurCoffe extends React.Component {
             { filter: 'kenya', name: 'Kenya' },
             { filter: 'columbia', name: 'Colombia' }
         ]
-        let buttons = buttonData.map(({ filter, name }) => <button key={filter} onClick={() => this.props.getSearchedCountry(filter)} >{name}</button>)
+        let buttons = buttonData.map(({ filter, name }) => {
+            //let activeClassName = 'ou__filter_btns-items__active';
+            let className;
+            if (this.props.countryFilter === filter) {
+                className = 'ou__filter_btns-items__btn';
+            } else {
+                className = 'ou__filter_btns-items__btn__active';
+            }
+            return <button className={className} key={filter} onClick={() => this.props.getSearchedCountry(filter)} >{name}</button>
+        })
 
         return (
             <div>

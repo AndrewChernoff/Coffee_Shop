@@ -6,8 +6,13 @@
     margin: 0 auto;
     text-decoration: none;
     margin-bottom: 15px;
-}
 
-.activeClassName {
-    color: gold;
+    &__item {
+        text-decoration: none;
+        color: white
+    }
+
+    &__selected {
+        color: gold;
+    }
 }

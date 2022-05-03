@@ -81,10 +81,14 @@
             grid-gap: 5px;
             grid-template-columns: 85px 85px 85px;
 
-            button {
+            &__btn {
                 background: #FFFFFF;
                 box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.25);
                 border-radius: 4px 0px 0px 4px;
+            }
+
+            &__active {
+                background: silver;
             }
         }
     }
