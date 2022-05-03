@@ -23,15 +23,17 @@ class App extends React.Component {
         { name: 'Awesome Coffee 1 kg', country: 'Brazil', img: aromistico, price: 9.99, best: false, id: 5 },
         { name: 'Super Coffee 2 kg', country: 'Columbia', img: aromistico, price: 11.99, best: false, id: 6 }
       ],
-      searchItem: '',
+      searchItem: ''
     }
   }
 
   searchItemByInput = (item) => {
     console.log(item)
-    //this.state.searchItem = item
+    //this.state.searchItem = item;
+    this.setState({
+      searchItem: item
+    })
     console.log(this.state.searchItem)
-
   }
 
   filterArray = (array, value) => {
@@ -61,7 +63,7 @@ class App extends React.Component {
 
         <Switch>
           <Route exact path="/" component={() => <CoffeHouse coffee={coffee} />} />
-          <Route path="/our_coffee" component={() => <OurCoffe coffee={coffee} searchItem={this.searchItemByInput} />} />
+          <Route exact path="/our_coffee" component={() => <OurCoffe coffee={coffee} searchItemByInput={this.searchItemByInput} />} />
         </Switch>
 
         <footer className='footer'>

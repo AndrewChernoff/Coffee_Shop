@@ -16,10 +16,12 @@ class OurCoffe extends React.Component {
         this.setState({
             value: e.target.value
         });
-        this.props.searchItem(e.target.value);
+        console.log(this.state.value)
+        this.props.searchItemByInput(e.target.value);
     }
 
     render() {
+        console.log('render')
         let { coffee } = this.props;
         return (
             <div>
@@ -37,7 +39,6 @@ class OurCoffe extends React.Component {
                                 <h2>About our Beans</h2>
                                 <DarkBean />
                                 <p>Extremity sweetness difficult behaviour he of. On disposal of as landlord horrible.</p>
-
                                 <p>Afraid at highly months do things on at. Situation recommend objection do intention
                                     so questions.</p>
                                 <p>As greatly removed calling pleased improve an. Last ask him cold feel
