@@ -3,6 +3,15 @@ import DarkBean from "../common/dark_bean/dark_bean";
 import '../../App.scss'
 
 const CoffeHouse = ({ coffee }) => {
+    let bestCoffee = coffee.filter(item => item.best === true).map(({ name, price, img, id }) => {
+        return <div key={id} className='best__coffee_item'>
+            <div className='best__coffee_item-content'>
+                <img src={img} alt='#' />
+                <div className='best__coffee_item_descr'>{name}</div>
+                <div className='best__coffee_item_price'>{price}</div>
+            </div>
+        </div>
+    })
     return (
         <div>
             <header className='promo'>
@@ -43,7 +52,7 @@ const CoffeHouse = ({ coffee }) => {
                 <div className='container'>
                     <h2>Our best</h2>
                     <div className='best__coffee'>
-                        {coffee}
+                        {bestCoffee}
                     </div>
                 </div>
             </section>

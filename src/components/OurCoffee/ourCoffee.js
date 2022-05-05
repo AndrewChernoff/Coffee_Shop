@@ -3,6 +3,7 @@ import '../OurCoffee/ourCoffee.scss';
 import girl from '../../images/girl.jpg';
 import '../../App.scss';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 class OurCoffe extends React.Component {
     constructor(props) {
@@ -22,13 +23,16 @@ class OurCoffe extends React.Component {
     render() {
         let { coffee } = this.props;
         let filteredCoffeeItems = coffee.map(({ name, price, img, id }) => {
-            return <div key={id} className='best__coffee_item'>
-                <div className='best__coffee_item-content'>
-                    <img src={img} alt='#' />
-                    <div className='best__coffee_item_descr'>{name}</div>
-                    <div className='best__coffee_item_price'>{price}</div>
+            const path = 'our_coffee_item' + id;
+            return <NavLink key={id} to={path}>
+                <div className='best__coffee_item'>
+                    <div className='best__coffee_item-content'>
+                        <img src={img} alt='#' />
+                        <div className='best__coffee_item_descr'>{name}</div>
+                        <div className='best__coffee_item_price'>{price}</div>
+                    </div>
                 </div>
-            </div>
+            </NavLink>
         })
         let buttonData = [
             { filter: 'all', name: 'All' },
@@ -37,7 +41,6 @@ class OurCoffe extends React.Component {
             { filter: 'columbia', name: 'Colombia' }
         ]
         let buttons = buttonData.map(({ filter, name }) => {
-            //let activeClassName = 'ou__filter_btns-items__active';
             let className;
             if (this.props.countryFilter === filter) {
                 className = 'ou__filter_btns-items__btn';

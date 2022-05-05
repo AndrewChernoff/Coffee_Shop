@@ -15,12 +15,12 @@ class App extends React.Component {
     super(props)
     this.state = {
       coffee: [
-        { name: 'Solimo Coffee Beans 2 kg', country: 'Kenya', img: presto, price: 10.73, best: false, id: 1 },
-        { name: 'Presto Coffee Beans 1 kg', country: 'Brazil', img: solimo, price: 15.99, best: false, id: 2 },
+        { name: 'Solimo Coffee Beans 2 kg', country: 'Kenya', img: presto, price: 10.73, best: true, id: 1 },
+        { name: 'Presto Coffee Beans 1 kg', country: 'Brazil', img: solimo, price: 15.99, best: true, id: 2 },
         { name: 'AROMISTICO Coffee 1 kg', country: 'Kenya', img: aromistico, price: 6.99, best: false, id: 3 },
         { name: 'Escobar Coffee 1 kg', country: 'Columbia', img: aromistico, price: 8.99, best: false, id: 4 },
         { name: 'Awesome Coffee 1 kg', country: 'Brazil', img: aromistico, price: 9.99, best: false, id: 5 },
-        { name: 'Super Coffee 2 kg', country: 'Columbia', img: aromistico, price: 11.99, best: false, id: 6 }
+        { name: 'Super Coffee 2 kg', country: 'Columbia', img: aromistico, price: 11.99, best: true, id: 6 }
       ],
       searchItem: '',
       searchCountry: 'all'
@@ -62,16 +62,6 @@ class App extends React.Component {
   }
 
   render() {
-    const coffee = this.state.coffee.map(({ name, price, img, id }) => {
-      return <div key={id} className='best__coffee_item'>
-        <div className='best__coffee_item-content'>
-          <img src={img} alt='#' />
-          <div className='best__coffee_item_descr'>{name}</div>
-          <div className='best__coffee_item_price'>{price}</div>
-        </div>
-      </div>
-    })
-
     let filteredArray = this.filterArray(this.getFilteredItems(this.state.searchCountry), this.state.searchItem);
 
     return (
@@ -81,7 +71,7 @@ class App extends React.Component {
         </div>
 
         <Switch>
-          <Route exact path="/" component={() => <CoffeHouse coffee={coffee} />} />
+          <Route exact path="/" component={() => <CoffeHouse coffee={this.state.coffee} />} />
           <Route exact path="/our_coffee">
             <OurCoffe coffee={filteredArray}
               getSearchedCountry={this.getSearchedCountry}
