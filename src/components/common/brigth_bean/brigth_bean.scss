@@ -8,10 +8,10 @@
     &:before {
         content: "";
         display: block;
-        width: 150px;
+        width: 60px;
         height: 3px;
         background: white;
-        left: 0;
+        left: 25%;
         top: 50%;
         position: absolute;
     }
@@ -19,10 +19,10 @@
     &:after {
         content: "";
         display: block;
-        width: 150px;
+        width: 60px;
         height: 3px;
         background: white;
-        right: 0;
+        right: 25%;
         top: 50%;
         position: absolute;
     }

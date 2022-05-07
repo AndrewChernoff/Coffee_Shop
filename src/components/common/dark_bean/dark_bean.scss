@@ -1,17 +1,18 @@
 .bean_img {
     display: block;
-    margin: 0 auto;
     position: relative;
     max-width: 400px;
+    min-width: 320px;
     margin: 35px auto;
+    text-align: center;
 
     &:before {
         content: "";
         display: block;
-        width: 150px;
+        width: 60px;
         height: 3px;
         background: black;
-        left: 0;
+        left: 25%;
         top: 50%;
         position: absolute;
     }
@@ -19,10 +20,10 @@
     &:after {
         content: "";
         display: block;
-        width: 150px;
+        width: 60px;
         height: 3px;
         background: black;
-        right: 0;
+        right: 25%;
         top: 50%;
         position: absolute;
     }
