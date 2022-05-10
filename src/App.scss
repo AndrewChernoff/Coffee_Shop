@@ -65,6 +65,12 @@
         justify-content: space-between;
         flex-wrap: wrap;
 
+        a {
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
+
         &_item {
             background: white;
             width: 220px;

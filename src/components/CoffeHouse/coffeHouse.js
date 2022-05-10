@@ -1,16 +1,19 @@
 import BrigthBean from "../common/brigth_bean/brigth_bean";
 import DarkBean from "../common/dark_bean/dark_bean";
-import '../../App.scss'
+import '../../App.scss';
+import { NavLink } from "react-router-dom";
 
 const CoffeHouse = ({ coffee }) => {
     let bestCoffee = coffee.filter(item => item.best === true).map(({ name, price, img, id }) => {
-        return <div key={id} className='best__coffee_item'>
-            <div className='best__coffee_item-content'>
-                <img src={img} alt='#' />
-                <div className='best__coffee_item_descr'>{name}</div>
-                <div className='best__coffee_item_price'>{price}</div>
+        return <NavLink key={id} to={`our_coffee/${id}`} >
+            <div className='best__coffee_item'>
+                <div className='best__coffee_item-content'>
+                    <img src={img} alt='#' />
+                    <div className='best__coffee_item_descr'>{name}</div>
+                    <div className='best__coffee_item_price'>{price}</div>
+                </div>
             </div>
-        </div>
+        </NavLink>
     })
     return (
         <div>
@@ -19,7 +22,7 @@ const CoffeHouse = ({ coffee }) => {
                     <div className='promo__content'>
                         <h1>Everything You Love About Coffee</h1>
                         <div><BrigthBean /></div>
-                        <h2>We makes every day full of energy and taste</h2>
+                        <h2>We make every day full of energy and taste</h2>
                         <h2>Want to try our beans?</h2>
                         <button className='promo__content-btn'>More</button>
                     </div>
@@ -56,7 +59,6 @@ const CoffeHouse = ({ coffee }) => {
                     </div>
                 </div>
             </section>
-
         </div>
     )
 }

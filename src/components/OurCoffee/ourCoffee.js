@@ -7,7 +7,7 @@ import OurCoffeeMain from './OurCoffeeMain/OurCoffeeMain';
 class OurCoffe extends React.Component {
 
     render() {
-        let { coffee, buttons, filteredCoffeeItems, getSearchedCountry, searchItemByInput, countryFilter } = this.props;
+        let { coffee, buttons, filteredCoffeeItems, getSearchedCountry, searchItemByInput, countryFilter, searchItem } = this.props;
 
         return (
             <div>
@@ -17,6 +17,7 @@ class OurCoffe extends React.Component {
                     getSearchedCountry={getSearchedCountry}
                     searchItemByInput={searchItemByInput}
                     countryFilter={countryFilter}
+                    searchItem={searchItem}
                 />
             </div>
         )

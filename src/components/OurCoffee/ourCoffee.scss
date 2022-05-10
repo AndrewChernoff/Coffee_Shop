@@ -99,5 +99,11 @@
         align-items: center;
         flex-wrap: wrap;
         margin-top: 60px;
+
+        a {
+            text-decoration: none;
+            color: black;
+            cursor: pointer;
+        }
     }
 }

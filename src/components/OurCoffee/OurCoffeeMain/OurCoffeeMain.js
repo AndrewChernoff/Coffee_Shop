@@ -5,11 +5,11 @@ import DarkBean from "../../common/dark_bean/dark_bean";
 export class OurCoffeeMainHeader extends React.Component {
     render() {
         return (
-            <div className="header">
+            <header className="header">
                 <div className='container'>
                     <h2>Our Coffee</h2>
                 </div>
-            </div>
+            </header>
         )
     }
 }
@@ -18,7 +18,7 @@ class OurCoffeeMain extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: ''
+            value: this.props.searchItem
         };
     }
 

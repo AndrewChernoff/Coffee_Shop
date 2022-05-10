@@ -1,0 +1,61 @@
+.header__pleasure {
+    height: 260px;
+    max-width: 1600px;
+    background: no-repeat center url('../../images/pleasure_bg.png');
+    background-size: cover;
+    color: white;
+    padding: 84px 0 84px 0;
+
+    h2 {
+        font-size: 40px;
+        text-align: center;
+        margin-top: 140px;
+    }
+}
+
+.pleasure__content {
+    padding: 60px 0 60px 0;
+
+    &__img {
+        width: 277px;
+        height: 338px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__info {
+        h2 {
+            text-align: center;
+            font-size: 24px;
+        }
+
+        &__descr {
+            font-size: 14px;
+            width: 346px;
+            text-align: center;
+        }
+    }
+
+    hr {
+        width: 240px;
+        height: 0px;
+        margin-top: 70px;
+    }
+}
+
+.pleasure__items {
+    .container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+    }
+}

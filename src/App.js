@@ -10,6 +10,8 @@ import OurCoffe from './components/OurCoffee/ourCoffee';
 import FooterLinks from './components/common/footer_links/footer_links';
 import DarkBean from './components/common/dark_bean/dark_bean';
 import CoffeeItem from './components/OurCoffee/CoffeeItem/coffeeItem';
+import Plesure from './components/Pleasure/pleasure';
+import Pleasure from './components/Pleasure/pleasure';
 
 class App extends React.Component {
   constructor(props) {
@@ -126,10 +128,14 @@ class App extends React.Component {
               getSearchedCountry={this.getSearchedCountry}
               searchItemByInput={this.searchItemByInput}
               countryFilter={this.state.searchCountry}
+              searchItem={this.state.searchItem}
             />
           </Route>
           <Route exact path="/our_coffee/:id">
             <CoffeeItem coffee={this.state.coffee} id={this.state.coffee} />
+          </Route>
+          <Route path="/pleasure"  >
+            <Pleasure coffee={this.state.coffee} />
           </Route>
         </Switch>
 
